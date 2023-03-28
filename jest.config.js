@@ -3,9 +3,22 @@ export default {
   collectCoverageFrom: [
     "src/**/*.{js,jsx,ts,tsx}",
     "!src/**/*.d.ts",
-    "!src/mocks/**",
+    "!src/**/*.mocks.{ts,tsx}",
+    "!src/**/*.styles.{ts,tsx}",
+    "!src/utils/testing.tsx",
   ],
-  coveragePathIgnorePatterns: [],
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "<rootdir>/src/utils/testing.tsx",
+  ],
+  coverageReporters: ["text"],
+  coverageThreshold: {
+    global: {
+      lines: 80,
+      branches: 80,
+      functions: 80,
+    },
+  },
   setupFilesAfterEnv: ["./config/jest/setupTests.js"],
   testEnvironment: "jsdom",
   modulePaths: ["<rootDir>/src"],
@@ -19,11 +32,15 @@ export default {
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
     "^.+\\.module\\.(css|sass|scss)$",
   ],
-  modulePaths: ["<rootDir>/src"],
   moduleNameMapper: {
     "^react-native$": "react-native-web",
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^@pages(.*)$": "<rootDir>/src/pages$1",
+    "^@components(.*)$": "<rootDir>/src/components$1",
+    "^@config(.*)$": "<rootDir>/config$1",
+    "^@utils(.*)$": "<rootDir>/src/utils$1",
   },
+  moduleDirectories: ["node_modules"],
   moduleFileExtensions: [
     // Place tsx and ts to beginning as suggestion from Jest team
     // https://jestjs.io/docs/configuration#modulefileextensions-arraystring
