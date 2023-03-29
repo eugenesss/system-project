@@ -1,4 +1,4 @@
-import { renderHook } from "@utils/testing";
+import { renderHook } from "@test-utils";
 import { useCurrentPath } from "./useCurrentPath";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import { render } from "@utils/testing";
+import { render } from "@test-utils";
 import TopNavBar from "./TopNavBar";
 
 describe("TopNavBar", () => {

@@ -1,31 +1,36 @@
 import React, { FunctionComponent } from "react";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
+import { Typography, Box, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import { SvgIconComponent } from "@mui/icons-material";
+
 import { MainBox, MainContentBox, PageTitle } from "./ShellContainer.styles";
 
 import DrawerMobile from "@components/shell/drawer/Drawer.mobile";
 import DrawerDesktop from "@components/shell/drawer/Drawer.desktop";
 import DrawerContent from "@components/shell/drawer/Content";
 
-import shellConfig from "@components/shell/config";
+import ShellConfig from "@components/shell/config";
 import TopNavBar from "@components/shell/topnav/TopNavBar";
-import { ShellDrawerItem } from "./view-models/types";
 
 import { useCurrentPath } from "@utils/useCurrentPath";
 import getPageTitle from "@components/shell/view-models/getPageTitle";
 import getNavListItems from "@components/shell/view-models/getNavListItems";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 
-const DRAWER_WIDTH = shellConfig.DRAWER_WIDTH;
+const DRAWER_WIDTH = ShellConfig.DRAWER_WIDTH;
 
 export enum DataTestId {
   MobileDrawer = "shell-mobile-drawer",
   DesktopDrawer = "shell-desktop-drawer",
   Content = "shell-drawer-content",
   MobileDrawerOpenBtn = "shell-mobile-drawer-open-btn",
+}
+
+export interface ShellDrawerItem {
+  label: string;
+  Icon: SvgIconComponent;
+  path: string;
 }
 
 interface ShellContainerProps {
@@ -45,8 +50,9 @@ const ShellContainer: FunctionComponent<ShellContainerProps> = ({
 
   const curRoute = useCurrentPath();
   const pageTitle = React.useMemo(
-    () => getPageTitle({ navItems: mainNavList, curRoute }),
-    [curRoute, mainNavList]
+    () =>
+      getPageTitle({ navItems: [...mainNavList, ...bottomNavList], curRoute }),
+    [bottomNavList, curRoute, mainNavList]
   );
 
   const handleDrawerToggle = () => {

@@ -1,4 +1,4 @@
-import { ShellDrawerItem } from "./types";
+import { ShellDrawerItem } from "@components/shell/ShellContainer";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 
 export const ShellDrawerItemMock: ShellDrawerItem = {

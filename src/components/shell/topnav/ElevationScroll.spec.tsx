@@ -1,4 +1,4 @@
-import { render } from "@utils/testing";
+import { render } from "@test-utils";
 import ElevationScroll from "./ElevationScroll";
 
 it("should render elevation on scroll", () => {

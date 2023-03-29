@@ -1,4 +1,4 @@
-import { ShellDrawerItem } from "@components/shell/view-models/types";
+import { ShellDrawerItem } from "@components/shell/ShellContainer";
 
 type GetPageTitleProps = {
   navItems: ShellDrawerItem[];

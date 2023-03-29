@@ -1,4 +1,4 @@
-import { renderWithRouter } from "@utils/testing";
+import { renderWithRouter } from "@test-utils";
 import DrawerContent, { DataTestId, DrawerContentProps } from ".";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { NavListItemProps } from "@components/shell/drawer/NavListItem";

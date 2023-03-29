@@ -1,0 +1,13 @@
+{
+  "main": {
+    "home": "/",
+    "login": "/login",
+    "logout": "/logout",
+    "dashboard": "/dashboard",
+    "settings": "/settings"
+  },
+  "inventory": {
+    "main": "/inventory",
+    "create": "/inventory/create"
+  }
+}

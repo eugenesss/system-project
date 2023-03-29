@@ -11,9 +11,9 @@ export const MainBox = styled(Box)`
 
 export const MainContentBox = styled(Box)(
   ({ theme }) => `
-flex-grow: 1;
-padding: ${theme.spacing(1, 3)};
-@media (min-width: 600px) {
+  flex-grow: 1;
+  padding: ${theme.spacing(1, 3)};
+  @media (min-width: 600px) {
     padding: ${theme.spacing(2, 6)};
   }
 `
@@ -21,7 +21,7 @@ padding: ${theme.spacing(1, 3)};
 
 export const PageTitle = styled(Typography)(
   ({ theme }) => `
-text-transform: capitalize;
-font-weight: ${theme.typography.fontWeightBold}
+  text-transform: capitalize;
+  font-weight: ${theme.typography.fontWeightMedium}
 `
 );

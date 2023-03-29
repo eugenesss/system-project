@@ -39,6 +39,7 @@ export default {
     "^@components(.*)$": "<rootDir>/src/components$1",
     "^@config(.*)$": "<rootDir>/config$1",
     "^@utils(.*)$": "<rootDir>/src/utils$1",
+    "^@test-utils$": "<rootDir>/src/utils/testing.tsx",
   },
   moduleDirectories: ["node_modules"],
   moduleFileExtensions: [

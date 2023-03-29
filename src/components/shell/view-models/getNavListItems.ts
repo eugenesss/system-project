@@ -1,5 +1,5 @@
 import { NavListItemProps } from "../drawer/NavListItem";
-import { ShellDrawerItem } from "./types";
+import { ShellDrawerItem } from "@components/shell/ShellContainer";
 
 const getNavListItems =
   (curRoute: string) =>

@@ -1,68 +1,48 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-import {
-  createTheme,
-  ThemeProvider,
-  Theme,
-  StyledEngineProvider,
-} from "@mui/material/styles";
-import LoginPage from "@pages/login";
-import DashboardPage from "@pages/dashboard";
-import ErrorPage from "@pages/error";
-import InventoryPage from "@pages/inventory";
+import ShellContainer, {
+  ShellDrawerItem,
+} from "@components/shell/ShellContainer";
 
-const router = createBrowserRouter([
+import AppRoutes from "./APP_ROUTES.json";
+
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SettingsIcon from "@mui/icons-material/Settings";
+
+const MAIN_NAV_LIST: ShellDrawerItem[] = [
   {
-    path: "/",
-    element: <div>Hello world!</div>,
-    errorElement: <ErrorPage />,
+    label: "dashboard",
+    Icon: DashboardIcon,
+    path: AppRoutes.main.dashboard,
   },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/dashboard", element: <DashboardPage /> },
   {
-    path: "/inventory",
-    element: <InventoryPage />,
-    children: [
-      {
-        path: ":id",
-        element: <InventoryPage />,
-        children: [{ path: ":test", element: <InventoryPage /> }],
-      },
-    ],
+    label: "Inventory",
+    Icon: InventoryIcon,
+    path: AppRoutes.inventory.main,
   },
-]);
+];
+
+const BOTTOM_NAV_LIST: ShellDrawerItem[] = [
+  {
+    label: "settings",
+    Icon: SettingsIcon,
+    path: AppRoutes.main.settings,
+  },
+  {
+    label: "logout",
+    Icon: LogoutIcon,
+    path: AppRoutes.main.logout,
+  },
+];
 
 function App() {
-  const theme: Theme = createTheme({
-    palette: {
-      primary: {
-        main: "#4557b1",
-      },
-      secondary: {
-        main: "#FFB74D",
-      },
-    },
-    typography: {
-      h1: {
-        fontSize: "3.4rem",
-      },
-      h2: {
-        fontSize: "2.8rem",
-      },
-      h3: {
-        fontSize: "2.4rem",
-      },
-      h4: {
-        fontSize: "1.8rem",
-      },
-    },
-  });
+  // handle auth - redirect to /dashboard
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <ShellContainer mainNavList={MAIN_NAV_LIST} bottomNavList={BOTTOM_NAV_LIST}>
+      <Outlet />
+    </ShellContainer>
   );
 }
 
