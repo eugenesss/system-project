@@ -1,7 +1,7 @@
 import { renderWithRouter } from "@test-utils";
 import DrawerContent, { DataTestId, DrawerContentProps } from ".";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import { NavListItemProps } from "@components/shell/drawer/NavListItem";
+import { NavListItemProps } from "@components/shell/Drawer/NavListItem";
 
 const mockNavListItem: NavListItemProps = {
   path: "/test",

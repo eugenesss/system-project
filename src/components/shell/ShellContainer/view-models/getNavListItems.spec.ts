@@ -1,7 +1,7 @@
 import getNavListItems, {
   transformRouteListToNavList,
 } from "./getNavListItems";
-import { makeShellDrawerItemMock } from "@components/shell/view-models/DrawerItem.mocks";
+import { makeShellDrawerItemMock } from "@components/shell/ShellContainer/view-models/DrawerItem.mocks";
 
 describe("getNavListItems", () => {
   it("should map ShellDrawerItem to NavListItemProps", () => {

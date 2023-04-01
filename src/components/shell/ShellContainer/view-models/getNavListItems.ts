@@ -1,4 +1,4 @@
-import { NavListItemProps } from "../drawer/NavListItem";
+import { NavListItemProps } from "../../Drawer/NavListItem";
 import { ShellDrawerItem } from "@components/shell/ShellContainer";
 
 const getNavListItems =

@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import {
   styled,
   TextField,
@@ -10,6 +10,10 @@ import {
 import SpaceDivider from "@components/common/SpaceDivider";
 import AppConstants from "@config/app/constants.json";
 
+import { AuthenticationService } from "@services/ShellServices/Authentication";
+import { useLocation, useNavigate } from "react-router-dom";
+import AppRoutes from "@AppRoutes";
+
 const LoginSection = styled("section")`
   display: flex;
   justify-content: center;
@@ -18,7 +22,7 @@ const LoginSection = styled("section")`
   width: 100vw;
 `;
 
-const LoginPaper = styled("div")(
+const LoginPaper = styled("form")(
   ({ theme }: { theme: Theme }) => `
   padding: ${theme.spacing(6)};
   width: 320px;
@@ -26,9 +30,22 @@ const LoginPaper = styled("div")(
 );
 
 const LoginPage: FunctionComponent = () => {
+  const [username, setUsername] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogin = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    await AuthenticationService.login({ username, password });
+
+    const origin = location.state?.from?.pathname || AppRoutes.main.dashboard;
+    navigate(origin);
+  };
+
   return (
     <LoginSection>
-      <LoginPaper>
+      <LoginPaper onSubmit={handleLogin}>
         <Typography variant="h3" color={"primary"}>
           {AppConstants.appname}
         </Typography>
@@ -41,6 +58,8 @@ const LoginPage: FunctionComponent = () => {
             label="Username / Email"
             variant="outlined"
             fullWidth
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </FormControl>
         <FormControl margin="normal" fullWidth>
@@ -50,10 +69,12 @@ const LoginPage: FunctionComponent = () => {
             variant="outlined"
             fullWidth
             type={"password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </FormControl>
         <SpaceDivider spacing={2} />
-        <Button color="secondary" variant="contained" fullWidth>
+        <Button color="secondary" variant="contained" fullWidth type="submit">
           Continue with email
         </Button>
       </LoginPaper>

@@ -19,6 +19,7 @@ import Routes from "./RoutesList";
 
 const theme: Theme = createTheme({
   palette: {
+    mode: "light",
     primary: {
       main: "#4557b1",
     },

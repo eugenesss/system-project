@@ -1,23 +1,54 @@
 import React, { ReactElement } from "react";
-import { render, RenderOptions, RenderResult } from "@testing-library/react";
+import { render, RenderOptions } from "@testing-library/react";
 import { createTheme, ThemeProvider, Theme } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import MockAuthContextProvider, {
+  MockAuthContextProviderProps,
+} from "@store/AuthContext/index.mocks";
 
 /**
  * Custom Render
  */
-const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+
+interface OverrideProviderProps {
+  authContext?: MockAuthContextProviderProps["providerProps"];
+}
+
+const AllTheProviders = ({
+  children,
+  overrideProviderProps,
+}: {
+  children: React.ReactElement;
+  overrideProviderProps?: OverrideProviderProps;
+}) => {
   const theme: Theme = createTheme();
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <MockAuthContextProvider
+        providerProps={overrideProviderProps?.authContext}
+      >
+        {children}
+      </MockAuthContextProvider>
+    </ThemeProvider>
+  );
 };
 
 const customRender = (
   ui: ReactElement,
-  options?: Omit<RenderOptions, "wrapper">
+  options?: Omit<RenderOptions, "wrapper"> & {
+    overrideProviderProps?: OverrideProviderProps;
+  }
 ) => ({
   user: userEvent.setup(),
-  ...render(ui, { wrapper: AllTheProviders, ...options }),
+  ...render(ui, {
+    wrapper: ({ children }) => (
+      <AllTheProviders overrideProviderProps={options?.overrideProviderProps}>
+        {children}
+      </AllTheProviders>
+    ),
+    ...options,
+  }),
 });
 
 /**
@@ -26,7 +57,7 @@ const customRender = (
 const AllTheProvidersWithRoutes = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactElement;
 }) => {
   return (
     <BrowserRouter>
@@ -50,4 +81,4 @@ const renderWithRouter = (
 };
 
 export * from "@testing-library/react";
-export { customRender as render, renderWithRouter, AllTheProvidersWithRoutes };
+export { customRender as render, renderWithRouter };

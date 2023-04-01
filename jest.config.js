@@ -6,6 +6,7 @@ export default {
     "!src/**/*.mocks.{ts,tsx}",
     "!src/**/*.styles.{ts,tsx}",
     "!src/utils/testing.tsx",
+    "!src/*.{ts,tsx}",
   ],
   coveragePathIgnorePatterns: [
     "/node_modules/",
@@ -39,7 +40,10 @@ export default {
     "^@components(.*)$": "<rootDir>/src/components$1",
     "^@config(.*)$": "<rootDir>/config$1",
     "^@utils(.*)$": "<rootDir>/src/utils$1",
+    "^@services(.*)$": "<rootDir>/src/services$1",
+    "^@store(.*)$": "<rootDir>/src/store$1",
     "^@test-utils$": "<rootDir>/src/utils/testing.tsx",
+    "^@AppRoutes$": "<rootDir>/src/APP_ROUTES.json",
   },
   moduleDirectories: ["node_modules"],
   moduleFileExtensions: [

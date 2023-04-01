@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import SpaceDivider from "@components/common/SpaceDivider";
 import NavListItem, {
   NavListItemProps,
-} from "@components/shell/drawer/NavListItem";
+} from "@components/shell/Drawer/NavListItem";
 import {
   NavListTitleText,
   MainMenuList,

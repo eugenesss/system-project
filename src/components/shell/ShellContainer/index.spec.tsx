@@ -1,8 +1,8 @@
-import ShellContainer, { DataTestId } from "./ShellContainer";
-import { DataTestId as DesktopDrawerDataTestId } from "@components/shell/drawer/Drawer.desktop";
-import { DataTestId as MobileDrawerDataTestId } from "@components/shell/drawer/Drawer.mobile";
+import ShellContainer, { DataTestId } from ".";
+import { DataTestId as DesktopDrawerDataTestId } from "@components/shell/Drawer/Drawer.desktop";
+import { DataTestId as MobileDrawerDataTestId } from "@components/shell/Drawer/Drawer.mobile";
 import { renderWithRouter } from "@test-utils";
-import { makeShellDrawerItemMock } from "@components/shell/view-models/DrawerItem.mocks";
+import { makeShellDrawerItemMock } from "./view-models/DrawerItem.mocks";
 
 import mediaQuery from "css-mediaquery";
 

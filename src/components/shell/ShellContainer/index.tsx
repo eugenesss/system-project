@@ -5,18 +5,18 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { SvgIconComponent } from "@mui/icons-material";
 
-import { MainBox, MainContentBox, PageTitle } from "./ShellContainer.styles";
+import { MainBox, MainContentBox, PageTitle } from "./index.styles";
 
-import DrawerMobile from "@components/shell/drawer/Drawer.mobile";
-import DrawerDesktop from "@components/shell/drawer/Drawer.desktop";
-import DrawerContent from "@components/shell/drawer/Content";
+import DrawerMobile from "@components/shell/Drawer/Drawer.mobile";
+import DrawerDesktop from "@components/shell/Drawer/Drawer.desktop";
+import DrawerContent from "@components/shell/Drawer/Content";
 
 import ShellConfig from "@components/shell/config";
-import TopNavBar from "@components/shell/topnav/TopNavBar";
+import TopNavBar from "@components/shell/TopNav/TopNavBar";
 
 import { useCurrentPath } from "@utils/useCurrentPath";
-import getPageTitle from "@components/shell/view-models/getPageTitle";
-import getNavListItems from "@components/shell/view-models/getNavListItems";
+import getPageTitle from "./view-models/getPageTitle";
+import getNavListItems from "./view-models/getNavListItems";
 
 const DRAWER_WIDTH = ShellConfig.DRAWER_WIDTH;
 

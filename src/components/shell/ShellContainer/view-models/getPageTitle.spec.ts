@@ -1,5 +1,5 @@
 import getPageTitle from "./getPageTitle";
-import { makeShellDrawerItemMock } from "@components/shell/view-models/DrawerItem.mocks";
+import { makeShellDrawerItemMock } from "@components/shell/ShellContainer/view-models/DrawerItem.mocks";
 
 describe("getPageTitle", () => {
   it("should get page title if found", () => {

@@ -15,7 +15,10 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@config": path.resolve(__dirname, "./config"),
       "@utils": path.resolve(__dirname, "./src/utils"),
+      "@services": path.resolve(__dirname, "./src/services"),
+      "@store": path.resolve(__dirname, "./src/store"),
       "@test-utils": path.resolve(__dirname, "./src/utils/testing.tsx"),
+      "@AppRoutes": path.resolve(__dirname, "./src/APP_ROUTES.json"),
     },
   },
 });

@@ -3,11 +3,13 @@ import shellConfig from "@components/shell/config";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-export const MainBox = styled(Box)`
+export const MainBox = styled(Box)(
+  () => `
   display: flex;
   min-height: 100vh;
   background: ${shellConfig.BACKGROUND_COLOR};
-`;
+  `
+);
 
 export const MainContentBox = styled(Box)(
   ({ theme }) => `

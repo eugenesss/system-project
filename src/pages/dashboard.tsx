@@ -1,9 +1,10 @@
 import { FunctionComponent } from "react";
+import { Typography } from "@mui/material";
 
 const DashboardPage: FunctionComponent = () => {
   return (
     <div>
-      <p>
+      <Typography variant="body1">
         Perfect. Could you explain why this works and not my approach though?
         scrollTarget is still undefined when useScrollTrigger is called for the
         first time. I know that by using useState the function will get called
@@ -24,7 +25,7 @@ const DashboardPage: FunctionComponent = () => {
         working. I checked the state and the state gets set with the div, but
         nothing change when I start scrolling. scrollTrigger is always false.
         Any idea? – wyndham007 Jan 12, 2021 at 11:50{" "}
-      </p>
+      </Typography>
     </div>
   );
 };
