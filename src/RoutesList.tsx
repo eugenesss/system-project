@@ -43,6 +43,10 @@ const Routes: RouteObject[] = [
               },
             ],
           },
+          {
+            path: AppRoutes.reporting.main,
+            element: <div>reporting</div>,
+          },
         ],
       },
     ],

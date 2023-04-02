@@ -9,5 +9,8 @@
   "inventory": {
     "main": "/inventory",
     "create": "/inventory/create"
+  },
+  "reporting": {
+    "main": "/reporting"
   }
 }

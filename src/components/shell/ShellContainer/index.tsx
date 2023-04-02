@@ -18,8 +18,6 @@ import { useCurrentPath } from "@utils/useCurrentPath";
 import getPageTitle from "./view-models/getPageTitle";
 import getNavListItems from "./view-models/getNavListItems";
 
-const DRAWER_WIDTH = ShellConfig.DRAWER_WIDTH;
-
 export enum DataTestId {
   MobileDrawer = "shell-mobile-drawer",
   DesktopDrawer = "shell-desktop-drawer",
@@ -34,14 +32,15 @@ export interface ShellDrawerItem {
 }
 
 interface ShellContainerProps {
-  mainNavList: ShellDrawerItem[];
-  bottomNavList: ShellDrawerItem[];
+  mainNavList?: ShellDrawerItem[];
+  bottomNavList?: ShellDrawerItem[];
   children: React.ReactNode;
 }
+const { DRAWER_WIDTH, MAIN_NAV_LIST, BOTTOM_NAV_LIST } = ShellConfig;
 
 const ShellContainer: FunctionComponent<ShellContainerProps> = ({
-  mainNavList,
-  bottomNavList,
+  mainNavList = MAIN_NAV_LIST,
+  bottomNavList = BOTTOM_NAV_LIST,
   children,
 }) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
